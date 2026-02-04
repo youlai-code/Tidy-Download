@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "智能下载管理器",
   "version": "1.0",
-  "description": "自动分类下载文件，并在管理页查看与操作下载记录。",
+  "description": "自动按规则分类下载文件。",
   "permissions": [
     "downloads",
     "storage"
@@ -11,7 +11,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "打开下载管理器",
+    "default_title": "智能分类设置",
     "default_popup": "popup.html"
   },
   "options_page": "options.html",

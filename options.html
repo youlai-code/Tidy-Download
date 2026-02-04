@@ -10,17 +10,38 @@
     <header class="header">
       <div>
         <h1 class="page-title">设置</h1>
-        <p class="page-subtitle">自定义每个分类的扩展名（英文逗号分隔）。</p>
+        <p class="page-subtitle">可自定义扩展名与文件夹名称，并支持新增分类。</p>
       </div>
       <div class="actions">
+        <button id="exportBtn" class="btn btn-toggle">导出配置</button>
+        <button id="importBtn" class="btn btn-toggle">导入配置</button>
         <span id="status" class="status">已保存</span>
         <button id="saveBtn" class="btn btn-primary">保存设置</button>
       </div>
     </header>
 
+    <div class="rule-panel">
+      <h3 class="rule-panel-title">未匹配文件处理</h3>
+      <div class="rule-panel-body">
+        <label class="rule-label">处理方式</label>
+        <select id="unmatchedAction" class="rule-input">
+          <option value="root">保留在下载根目录</option>
+          <option value="others">移动到指定文件夹</option>
+        </select>
+        <label class="rule-label">目标文件夹名称</label>
+        <input id="unmatchedFolder" class="rule-input" type="text" value="Others">
+      </div>
+    </div>
+
     <div id="rulesContainer" class="rules-grid">
       <!-- JS will populate this -->
     </div>
+
+    <div class="actions">
+      <button id="addRuleBtn" class="btn btn-toggle">新增分类</button>
+    </div>
+
+    <input id="importFile" type="file" accept="application/json" style="display:none;">
   </div>
 
   <script src="options.js"></script>

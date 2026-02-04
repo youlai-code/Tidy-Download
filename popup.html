@@ -1,18 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <style>
-    body { width: 200px; padding: 10px; font-family: sans-serif; text-align: center; }
-    button { 
-      background: #6366f1; color: white; border: none; padding: 10px 15px; 
-      border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold;
+    body {
+      width: 240px;
+      padding: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
     }
-    button:hover { background: #4f46e5; }
+    .title {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .status {
+      font-size: 0.9rem;
+    }
+    .btn {
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #4f46e5;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 22px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #cbd5e1;
+      transition: .2s;
+      border-radius: 999px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 999px;
+    }
+    input:checked + .slider {
+      background-color: #22c55e;
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
   </style>
 </head>
 <body>
-  <button id="openBtn">打开管理页</button>
+  <div class="row">
+    <span id="statusText" class="status">智能分类：已开启</span>
+    <label class="switch">
+      <input id="toggle" type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <button id="openOptions" class="btn">打开设置</button>
   <script src="popup.js"></script>
 </body>
 </html>

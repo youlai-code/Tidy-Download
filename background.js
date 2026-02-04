@@ -1,37 +1,55 @@
 // 默认分类逻辑，当 storage 为空时使用
-const defaultRules = {
-  "Images": ["jpg", "jpeg", "png", "gif", "webp", "svg"],
-  "Documents": ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt"],
-  "Videos": ["mp4", "mkv", "avi", "mov"],
-  "Archives": ["zip", "rar", "7z", "tar", "gz"]
+const defaultRules = [
+  { id: "Images", folder: "Images", exts: ["jpg", "jpeg", "png", "gif", "webp", "svg"] },
+  { id: "Documents", folder: "Documents", exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md"] },
+  { id: "Videos", folder: "Videos", exts: ["mp4", "mkv", "avi", "mov", "wmv"] },
+  { id: "Audio", folder: "Audio", exts: ["mp3", "wav", "flac", "m4a"] },
+  { id: "Archives", folder: "Archives", exts: ["zip", "rar", "7z", "tar", "gz"] },
+  { id: "Programs", folder: "Programs", exts: ["exe", "msi", "bat", "dmg", "pkg", "deb"] }
+];
+
+const defaultConfig = {
+  version: 1,
+  rules: defaultRules,
+  unmatchedAction: "others",
+  unmatchedFolder: "Others"
 };
 
-// 监听下载文件名确定事件
 chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
-  // 从本地存储获取用户自定义规则
-  chrome.storage.local.get(['userRules'], (result) => {
-    const rules = result.userRules || defaultRules;
-    // 获取扩展名 (处理没有扩展名的情况)
+  chrome.storage.local.get(['rulesConfig', 'userRules', 'autoClassifyEnabled'], (result) => {
+    const enabled = result.autoClassifyEnabled !== false;
+    if (!enabled) {
+      suggest({
+        filename: item.filename,
+        conflictAction: "uniquify"
+      });
+      return;
+    }
+
+    const config = normalizeConfig(result.rulesConfig || result.userRules || defaultConfig);
+    const rules = config.rules;
     const filenameParts = item.filename.split('.');
     const extension = filenameParts.length > 1 ? filenameParts.pop().toLowerCase() : '';
-    
-    let subFolder = "Others";
 
-    // 匹配规则：优先匹配扩展名
+    let subFolder = "";
+
     if (extension) {
-      for (const [folder, exts] of Object.entries(rules)) {
-        if (exts.includes(extension)) {
-          subFolder = folder;
+      for (const rule of rules) {
+        if (rule.exts.includes(extension)) {
+          subFolder = sanitizeFolderName(rule.folder);
           break;
         }
       }
     }
 
-    // 构造最终保存路径
-    // 注意：Chrome 扩展下载 API 不允许绝对路径，也不允许 '..'
-    // 路径分隔符标准化为 forward slash
+    if (!subFolder) {
+      if (config.unmatchedAction === "others") {
+        subFolder = sanitizeFolderName(config.unmatchedFolder || "Others");
+      }
+    }
+
     const cleanFilename = item.filename.replace(/\\/g, '/');
-    const finalPath = `${subFolder}/${cleanFilename}`;
+    const finalPath = subFolder ? `${subFolder}/${cleanFilename}` : cleanFilename;
 
     suggest({
       filename: finalPath,
@@ -39,6 +57,77 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
     });
   });
 
-  // 必须返回 true 以表示我们将异步调用 suggest
   return true;
 });
+
+function normalizeConfig(rawConfig) {
+  const config = {
+    version: 1,
+    rules: [...defaultRules],
+    unmatchedAction: "others",
+    unmatchedFolder: "Others"
+  };
+
+  if (!rawConfig) return config;
+
+  if (rawConfig.unmatchedAction) {
+    config.unmatchedAction = rawConfig.unmatchedAction;
+  }
+  if (rawConfig.unmatchedFolder) {
+    config.unmatchedFolder = rawConfig.unmatchedFolder;
+  }
+
+  if (Array.isArray(rawConfig.rules)) {
+    config.rules = normalizeRulesArray(rawConfig.rules);
+  } else if (Array.isArray(rawConfig)) {
+    config.rules = normalizeRulesArray(rawConfig);
+  } else if (typeof rawConfig === "object") {
+    config.rules = normalizeRulesFromObject(rawConfig);
+  }
+
+  config.rules = mergeWithDefaults(config.rules);
+  return config;
+}
+
+function normalizeRulesArray(rules) {
+  return rules
+    .filter(Boolean)
+    .map((rule, index) => ({
+      id: rule.id || `custom_${index}`,
+      folder: rule.folder || rule.id || `custom_${index}`,
+      exts: Array.isArray(rule.exts) ? rule.exts.map(normalizeExt).filter(Boolean) : []
+    }));
+}
+
+function normalizeRulesFromObject(obj) {
+  return Object.entries(obj)
+    .filter(([, value]) => Array.isArray(value) || (value && Array.isArray(value.exts)))
+    .map(([key, value]) => ({
+      id: key,
+      folder: value.folder || key,
+      exts: (value.exts || value).map(normalizeExt).filter(Boolean)
+    }));
+}
+
+function mergeWithDefaults(rules) {
+  const map = new Map();
+  defaultRules.forEach(rule => {
+    map.set(rule.id, { ...rule });
+  });
+  rules.forEach(rule => {
+    if (!rule || !rule.id) return;
+    const merged = { ...(map.get(rule.id) || {}), ...rule };
+    map.set(rule.id, merged);
+  });
+  return Array.from(map.values());
+}
+
+function normalizeExt(ext) {
+  return String(ext || "").trim().toLowerCase();
+}
+
+function sanitizeFolderName(name) {
+  return String(name || "")
+    .replace(/[\\/:*?"<>|]+/g, "_")
+    .trim();
+}

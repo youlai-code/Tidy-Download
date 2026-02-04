@@ -1,23 +1,18 @@
 # 智能下载管理器 (Smart Download Manager)
 
-基于 Chrome Manifest V3 的下载管理扩展，自动按文件类型分类下载，并提供管理页用于搜索、查看与操作下载记录。
+基于 Chrome Manifest V3 的智能分类扩展，自动按规则将下载文件存入对应子文件夹。
 
 ## 功能概览
 
 - 自动分类下载文件（按扩展名）
-- 管理页：搜索、打开文件、在文件夹中显示
-- 设置页：自定义扩展名分类
+- 弹窗：一键开关智能分类
+- 设置页：自定义分类、扩展名与文件夹名称，支持导入/导出
 
 ## 快速开始
 
 1. 打开 `chrome://extensions/`，启用“开发者模式”
 2. 点击“加载已解压的扩展程序”，选择项目根目录
-3. 点击扩展图标打开管理页
-
-## 文档
-
-- 分类逻辑：`分类逻辑.md`
-- 测试与部署：`测试部署文档.md`
+3. 点击扩展图标可开关“智能分类”，并进入设置页
 
 ## 目录结构
 
@@ -27,10 +22,9 @@
   ├── background.js
   ├── options.html
   ├── options.js
-  ├── manager.html
-  ├── manager.js
+  ├── popup.html
+  ├── popup.js
   ├── style.css
-  ├── organize-downloads.py
   └── icons/
 ```
 
@@ -38,4 +32,4 @@
 
 - Modern Minimalist + Glassmorphism + Bento Box
 - 主色：`#6366f1`，背景：`#f8fafc`
-- 左侧分类导航 + 右侧搜索与卡片/列表
+- 简洁面板 + 玻璃拟态风格
