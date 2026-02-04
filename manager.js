@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   renderDownloads();
   setupEventListeners();
+  restoreViewMode();
 });
 
 let currentFilter = 'all';
 let currentSearch = '';
+const defaultRules = {
+  Images: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+  Documents: ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt'],
+  Videos: ['mp4', 'mkv', 'avi', 'mov'],
+  Archives: ['zip', 'rar', '7z', 'tar', 'gz']
+};
 
 function setupEventListeners() {
   // 搜索框事件
@@ -27,6 +34,13 @@ function setupEventListeners() {
       renderDownloads();
     });
   });
+
+  // 视图切换
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+  gridBtn.addEventListener('click', () => setViewMode('grid'));
+  listBtn.addEventListener('click', () => setViewMode('list'));
+
 }
 
 async function renderDownloads() {
@@ -95,7 +109,6 @@ async function renderDownloads() {
         <div class="file-info">
           <div class="file-name" title="${item.filename}">${shortName}</div>
           <div class="file-meta">${fileSize} · ${dateStr} · <span class="file-category">${category}</span></div>
-          <div class="file-url" title="${urlText}">${urlShort}</div>
         </div>
       </div>
       <div class="card-actions">
@@ -156,5 +169,24 @@ function shortenUrl(url) {
     return url.length > 60 ? `${host}…` : url;
   } catch {
     return url.length > 60 ? `${url.slice(0, 57)}…` : url;
+  }
+}
+
+function restoreViewMode() {
+  const mode = localStorage.getItem('viewMode') || 'list';
+  setViewMode(mode, true);
+}
+
+function setViewMode(mode, silent = false) {
+  const listContainer = document.getElementById('downloadList');
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+
+  listContainer.classList.toggle('list-view', mode === 'list');
+  gridBtn.classList.toggle('active', mode === 'grid');
+  listBtn.classList.toggle('active', mode === 'list');
+
+  if (!silent) {
+    localStorage.setItem('viewMode', mode);
   }
 }

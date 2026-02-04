@@ -104,6 +104,15 @@ body {
   background: var(--primary-hover);
 }
 
+.btn-small {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 /* Sidebar / Filter Navigation */
 .sidebar {
   background: var(--card-bg);
@@ -172,6 +181,7 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--shadow-sm);
+  gap: 16px;
 }
 
 .search-box {
@@ -226,6 +236,10 @@ body {
   overflow: hidden;
 }
 
+.compact .download-card {
+  padding: 10px;
+}
+
 .download-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -239,6 +253,11 @@ body {
   margin-bottom: 12px;
 }
 
+.compact .card-top {
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
 .file-icon {
   width: 40px;
   height: 40px;
@@ -250,6 +269,12 @@ body {
   color: white;
   font-size: 0.8rem;
   flex-shrink: 0;
+}
+
+.compact .file-icon {
+  width: 34px;
+  height: 34px;
+  font-size: 0.7rem;
 }
 
 /* File type colors */
@@ -272,9 +297,17 @@ body {
   margin-bottom: 4px;
 }
 
+.compact .file-name {
+  font-size: 0.92rem;
+}
+
 .file-meta {
   font-size: 0.8rem;
   color: var(--text-sub);
+}
+
+.compact .file-meta {
+  font-size: 0.75rem;
 }
 
 .file-category {
@@ -306,6 +339,80 @@ body {
   font-size: 0.85rem;
   font-weight: 500;
   transition: background 0.2s;
+}
+
+.compact .btn {
+  padding: 5px 6px;
+  font-size: 0.78rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-toggle {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--primary);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  font-size: 0.8rem;
+}
+
+.btn-toggle.active {
+  background: var(--primary);
+  color: white;
+}
+
+.download-grid.list-view {
+  grid-template-columns: 1fr;
+}
+
+.download-grid.list-view .download-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 4px;
+}
+
+.download-grid.list-view .card-top {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.download-grid.list-view .card-actions {
+  width: 120px;
+}
+
+.download-grid.list-view .download-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.download-grid.list-view .file-meta {
+  font-size: 0.72rem;
+}
+
+.download-grid.list-view .file-url {
+  font-size: 0.72rem;
+}
+
+.download-grid.list-view .file-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 0.65rem;
+}
+
+.download-grid.list-view .btn {
+  padding: 4px 6px;
+  font-size: 0.75rem;
 }
 
 .btn-open {

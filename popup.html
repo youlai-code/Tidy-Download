@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <style>
     body { width: 200px; padding: 10px; font-family: sans-serif; text-align: center; }
     button { 
@@ -12,10 +13,6 @@
 </head>
 <body>
   <button id="openBtn">打开管理页</button>
-  <script>
-    document.getElementById('openBtn').addEventListener('click', () => {
-      chrome.tabs.create({ url: 'manager.html' });
-    });
-  </script>
+  <script src="popup.js"></script>
 </body>
 </html>
