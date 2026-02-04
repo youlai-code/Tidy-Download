@@ -351,6 +351,7 @@ function setupEventListeners() {
   els.langSelect.addEventListener('change', (e) => {
     currentConfig.language = e.target.value;
     applyLanguage(currentConfig.language);
+    renderUI(); // 重新渲染卡片以更新分类名称
   });
 
   // 常规设置联动
@@ -388,7 +389,9 @@ function renderUI() {
     
     // 获取多语言标签
     const t = i18n[currentConfig.language];
-    const ruleLabel = (rule.builtin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
+    // 兼容旧数据的 builtin 判断：如果 builtin 未定义但 ID 在默认列表中，也视为内置
+    const isBuiltin = rule.builtin !== false && ['Images', 'Documents', 'Videos', 'Audio', 'Archives', 'Apps'].includes(rule.id);
+    const ruleLabel = (isBuiltin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
 
     // 关键修改：不再截取前6个，而是映射所有后缀 
     // 如果后缀实在太多（比如超过20个），可以考虑切片，但一般情况下全部显示更好 
@@ -459,7 +462,11 @@ function openModal(ruleIndex = null) {
   if (isEdit) {
     const rule = currentConfig.rules[ruleIndex];
     els.inputs.id.value = ruleIndex; // 临时存索引
-    els.inputs.label.value = rule.label;
+    
+    // 编辑时也显示翻译后的名称
+    const isBuiltin = rule.builtin !== false && ['Images', 'Documents', 'Videos', 'Audio', 'Archives', 'Apps'].includes(rule.id);
+    els.inputs.label.value = (isBuiltin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
+    
     els.inputs.folder.value = rule.folder;
     els.inputs.exts.value = rule.exts.join(', ');
     els.btns.deleteRule.style.display = 'block';
