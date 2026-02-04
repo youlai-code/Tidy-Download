@@ -26,7 +26,13 @@ const i18n = {
     btn_confirm: "确定",
     msg_saved: "设置已保存",
     msg_imported: "配置导入成功",
-    msg_import_err: "导入失败，格式错误"
+    msg_import_err: "导入失败，格式错误",
+    rule_Images: "图片",
+    rule_Documents: "文档",
+    rule_Videos: "视频",
+    rule_Audio: "音乐",
+    rule_Archives: "压缩包",
+    rule_Apps: "应用安装包"
   },
   "en": {
     nav_general: "General",
@@ -54,17 +60,60 @@ const i18n = {
     btn_confirm: "Confirm",
     msg_saved: "Settings Saved",
     msg_imported: "Imported Successfully",
-    msg_import_err: "Import Failed"
+    msg_import_err: "Import Failed",
+    rule_Images: "Images",
+    rule_Documents: "Documents",
+    rule_Videos: "Videos",
+    rule_Audio: "Music",
+    rule_Archives: "Archives",
+    rule_Apps: "Applications"
   }
 };
 
 // 默认数据
 const defaultRules = [
-  { id: "Images", label: "图片", folder: "Images", exts: ["jpg", "jpeg", "png", "gif", "webp", "svg"], builtin: true },
-  { id: "Documents", label: "文档", folder: "Documents", exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md"], builtin: true },
-  { id: "Videos", label: "视频", folder: "Videos", exts: ["mp4", "mkv", "avi", "mov", "wmv"], builtin: true },
-  { id: "Archives", label: "压缩包", folder: "Archives", exts: ["zip", "rar", "7z", "tar", "gz"], builtin: true },
-  { id: "Programs", label: "程序", folder: "Programs", exts: ["exe", "msi", "bat", "dmg", "pkg", "deb"], builtin: true }
+  { 
+    id: "Images", 
+    label: "Images", 
+    folder: "Images", 
+    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"], 
+    builtin: true 
+  },
+  { 
+    id: "Documents", 
+    label: "Documents", 
+    folder: "Documents", 
+    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"], 
+    builtin: true 
+  },
+  { 
+    id: "Videos", 
+    label: "Videos", 
+    folder: "Videos", 
+    exts: ["mp4", "mov", "mkv", "webm", "avi"], 
+    builtin: true 
+  },
+  { 
+    id: "Audio", 
+    label: "Music", 
+    folder: "Music", 
+    exts: ["mp3", "wav", "ogg", "flac", "m4a"], 
+    builtin: true 
+  },
+  { 
+    id: "Archives", 
+    label: "Archives", 
+    folder: "Archives", 
+    exts: ["zip", "rar", "7z", "tar", "gz", "iso"], 
+    builtin: true 
+  },
+  { 
+    id: "Apps", 
+    label: "Applications", 
+    folder: "Apps", 
+    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"], 
+    builtin: true 
+  }
 ];
 
 let currentConfig = {
@@ -167,15 +216,22 @@ function renderUI() {
     card.className = 'rule-card';
     card.onclick = () => openModal(index);
     
-    const tags = rule.exts.slice(0, 6).map(ext => `<span class="ext-tag">.${ext}</span>`).join('');
-    const more = rule.exts.length > 6 ? `<span class="ext-tag">...</span>` : '';
+    // 获取多语言标签
+    const t = i18n[currentConfig.language];
+    const ruleLabel = (rule.builtin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
+
+    // 关键修改：不再截取前6个，而是映射所有后缀 
+    // 如果后缀实在太多（比如超过20个），可以考虑切片，但一般情况下全部显示更好 
+    const tags = rule.exts.map(ext => `<span class="ext-tag">.${ext}</span>`).join(''); 
     
-    card.innerHTML = `
-      <div class="rule-card-header">
-        <span class="rule-name">${rule.label}</span>
-        <span class="rule-folder">/${rule.folder}</span>
-      </div>
-      <div class="rule-tags">${tags}${more}</div>
+    // 移除 "more" 变量，因为我们现在全展示了 
+    
+    card.innerHTML = ` 
+      <div class="rule-card-header"> 
+        <span class="rule-name">${ruleLabel}</span> 
+        <span class="rule-folder">/${rule.folder}</span> 
+      </div> 
+      <div class="rule-tags">${tags}</div> 
     `;
     els.rulesGrid.appendChild(card);
   });

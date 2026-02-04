@@ -1,11 +1,35 @@
 // 默认分类逻辑，当 storage 为空时使用
 const defaultRules = [
-  { id: "Images", folder: "Images", exts: ["jpg", "jpeg", "png", "gif", "webp", "svg"] },
-  { id: "Documents", folder: "Documents", exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md"] },
-  { id: "Videos", folder: "Videos", exts: ["mp4", "mkv", "avi", "mov", "wmv"] },
-  { id: "Audio", folder: "Audio", exts: ["mp3", "wav", "flac", "m4a"] },
-  { id: "Archives", folder: "Archives", exts: ["zip", "rar", "7z", "tar", "gz"] },
-  { id: "Programs", folder: "Programs", exts: ["exe", "msi", "bat", "dmg", "pkg", "deb"] }
+  { 
+    id: "Images", 
+    folder: "Images", 
+    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"] 
+  },
+  { 
+    id: "Documents", 
+    folder: "Documents", 
+    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"] 
+  },
+  { 
+    id: "Videos", 
+    folder: "Videos", 
+    exts: ["mp4", "mov", "mkv", "webm", "avi"] 
+  },
+  { 
+    id: "Audio", 
+    folder: "Music", 
+    exts: ["mp3", "wav", "ogg", "flac", "m4a"] 
+  },
+  { 
+    id: "Archives", 
+    folder: "Archives", 
+    exts: ["zip", "rar", "7z", "tar", "gz", "iso"] 
+  },
+  { 
+    id: "Apps", 
+    folder: "Apps", 
+    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"] 
+  }
 ];
 
 const defaultConfig = {

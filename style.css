@@ -127,22 +127,57 @@ small { color: var(--text-sub); font-size: 12px; }
 
 /* 规则网格 (Compact Grid) */
 .rules-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-.rules-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.rule-card {
-  background: white; border: 1px solid var(--border);
-  border-radius: 12px; padding: 16px; cursor: pointer;
-  transition: all 0.2s; position: relative;
-}
+.rules-grid { 
+  display: grid; 
+  /* 使用 auto-fill 让卡片自动折行，对齐方式改为 start 防止卡片被强制拉伸 */ 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  align-items: start; 
+  gap: 16px; 
+} 
+
+.rule-card { 
+  background: white; 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  padding: 16px; 
+  cursor: pointer; 
+  transition: all 0.2s; 
+  position: relative; 
+  /* 移除固定高度，允许内容撑开 */ 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; /* 增加内部间距 */ 
+} 
+
 .rule-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-.rule-card-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+
+.rule-card-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; /* 确保标题和路径垂直居中 */ 
+  margin-bottom: 0; /* 间距交给父级 gap 处理 */ 
+} 
+
 .rule-name { font-weight: 600; font-size: 15px; }
 .rule-folder { font-size: 13px; color: var(--text-sub); background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
-.rule-tags { display: flex; flex-wrap: wrap; gap: 4px; height: 24px; overflow: hidden; }
-.ext-tag { font-size: 12px; color: var(--text-sub); background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; }
+
+.rule-tags { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 6px; /*稍微增加标签间距 */ 
+  /* 关键修改：移除 height 和 overflow，允许无限换行 */ 
+  width: 100%; 
+} 
+
+.ext-tag { 
+  font-size: 12px; 
+  color: var(--text-sub); 
+  background: #f8fafc; 
+  padding: 4px 8px; /* 稍微增加内边距，更易读 */ 
+  border-radius: 4px; 
+  border: 1px solid #e2e8f0; 
+  line-height: 1.4; 
+}
 
 /* 模态框 (Modal) */
 .modal-overlay {
