@@ -352,6 +352,7 @@ function setupEventListeners() {
     currentConfig.language = e.target.value;
     applyLanguage(currentConfig.language);
     renderUI(); // 重新渲染卡片以更新分类名称
+    saveConfig(true); // 自动静默保存
   });
 
   // 常规设置联动

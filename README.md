@@ -1,35 +1,59 @@
-# 智能下载管理器 (Smart Download Manager)
+# TidyDownload - 下载自动归类助手
 
-基于 Chrome Manifest V3 的智能分类扩展，自动按规则将下载文件存入对应子文件夹。
+基于 Chrome Manifest V3 的智能文件整理扩展，自动按规则将下载文件存入对应子文件夹，让你的下载文件夹从此井井有条。
 
-## 功能概览
+## 核心功能
 
-- 自动分类下载文件（按扩展名）
-- 弹窗：一键开关智能分类
-- 设置页：自定义分类、扩展名与文件夹名称，支持导入/导出
+- **自动归档**：根据文件扩展名，自动将下载文件分类到 Images、Documents、Videos 等文件夹。
+- **多语言支持**：完美支持 中文、English、日本語、한국어、Français、Español、العربية (RTL)。
+- **灵活配置**：
+  - 可自定义分类规则、扩展名和目标文件夹。
+  - 支持启用/禁用特定规则。
+  - **自动保存**：修改设置或切换语言后自动静默保存。
+- **极简体验**：
+  - 现代化 UI 设计 (Glassmorphism + Bento Box)。
+  - 弹窗一键开关智能分类功能。
 
 ## 快速开始
 
-1. 打开 `chrome://extensions/`，启用“开发者模式”
-2. 点击“加载已解压的扩展程序”，选择项目根目录
-3. 点击扩展图标可开关“智能分类”，并进入设置页
+1. **安装扩展**：
+   - 打开 Chrome 浏览器，访问 `chrome://extensions/`。
+   - 开启右上角的 **“开发者模式”**。
+   - 点击 **“加载已解压的扩展程序”**，选择本项目的根目录。
+
+2. **使用说明**：
+   - 安装后，点击浏览器右上角的扩展图标。
+   - **Popup 弹窗**：可快速查看运行状态（运行中/已暂停）或进入设置页。
+   - **设置页**：
+     - **添加规则**：点击 “+” 号卡片添加新的分类规则。
+     - **编辑规则**：点击已有卡片修改文件夹名称或扩展名列表。
+     - **切换语言**：左下角选择你熟悉的语言，界面即刻更新。
 
 ## 目录结构
 
 ```text
-/smart-download-manager
-  ├── manifest.json
-  ├── background.js
-  ├── options.html
-  ├── options.js
-  ├── popup.html
-  ├── popup.js
-  ├── style.css
-  └── icons/
+/TidyDownload
+  ├── manifest.json       # 扩展配置文件 (MV3)
+  ├── background.js       # 后台服务 (处理下载分类逻辑)
+  ├── popup.html          # 弹窗界面
+  ├── popup.js            # 弹窗逻辑 (i18n, 状态切换)
+  ├── options.html        # 设置页面
+  ├── options.js          # 设置逻辑 (规则管理, 多语言, 自动保存)
+  ├── style.css           # 全局样式 (Glassmorphism, Bento Grid)
+  └── icons/              # 图标资源
 ```
 
-## UI 风格（已集成）
+## UI 风格
 
-- Modern Minimalist + Glassmorphism + Bento Box
-- 主色：`#6366f1`，背景：`#f8fafc`
-- 简洁面板 + 玻璃拟态风格
+- **设计语言**：Modern Minimalist + Glassmorphism + Bento Box
+- **配色方案**：
+  - 主色调：`#6366f1` (Indigo)
+  - 背景色：`#f8fafc` (Slate 50)
+- **技术栈**：原生 HTML/CSS/JS (零依赖，轻量级，完全符合 CSP 规范)
+
+## 开发日志
+
+- **v1.0.0**: 初始版本发布，支持基础自动分类。
+  
+---
+Enjoy a tidy download folder!
