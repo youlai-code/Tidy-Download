@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - Organisateur",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "Trie automatiquement les fichiers téléchargés dans des dossiers (Images, Docs, Applications, etc.).",
+    "description": "Extension description"
+  }
+}

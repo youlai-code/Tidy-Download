@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - 自動整理",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "ダウンロードしたファイルをフォルダ（画像、ドキュメント、アプリなど）に自動的に分類します。",
+    "description": "Extension description"
+  }
+}

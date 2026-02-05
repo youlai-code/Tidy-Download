@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - 下载自动归类助手",
+    "description": "扩展名称"
+  },
+  "appDesc": {
+    "message": "下载文件自动归档到对应文件夹（图片、文档、应用等）。",
+    "description": "扩展描述"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - منظم التحميل",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "يقوم بفرز الملفات التي تم تنزيلها تلقائيًا في مجلدات (صور ، مستندات ، تطبيقات ، إلخ).",
+    "description": "Extension description"
+  }
+}

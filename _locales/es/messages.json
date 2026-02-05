@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - Organizador",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "Clasifica automáticamente los archivos descargados en carpetas (Imágenes, Documentos, Aplicaciones, etc.).",
+    "description": "Extension description"
+  }
+}
