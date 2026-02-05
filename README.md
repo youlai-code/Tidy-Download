@@ -8,7 +8,7 @@
 
 - **自动归档**：根据文件扩展名，自动将下载文件分类到 Images、Documents、Videos、Audio、Archives、Apps 等文件夹。
 - **隐私优先**：本地运行，不收集任何数据。详情请参阅 [隐私政策](PRIVACY.md)。
-- **多语言支持**：完美支持 中文、English、日本語、한국어、Français、Español、العربية (RTL)。
+- **多语言支持**：支持 简体中文、繁体中文、英语、日语、韩语、法语、西班牙语、阿拉伯语、葡萄牙语、俄语、德语、印尼语、泰语、越南语、土耳其语、意大利语、波兰语、荷兰语、瑞典语、印地语、希腊语。
 - **灵活配置**：
   - 可自定义分类规则、扩展名和目标文件夹。
   - 支持启用/禁用特定规则。
@@ -70,7 +70,7 @@ A smart file organization extension based on Chrome Manifest V3 that automatical
 
 - **Automatic Archiving**: Automatically classifies downloads into Images, Documents, Videos, Audio, Archives, Apps, etc., based on file extensions.
 - **Privacy First**: Local processing, no data collection. See [Privacy Policy](PRIVACY.md) for details.
-- **Multi-language Support**: Perfect support for Chinese, English, Japanese, Korean, French, Spanish, Arabic (RTL).
+- **Multi-language Support**: Support for Simplified Chinese, Traditional Chinese, English, Japanese, Korean, French, Spanish, Arabic, Portuguese, Russian, German, Indonesian, Thai, Vietnamese, Turkish, Italian, Polish, Dutch, Swedish, Hindi, Greek.
 - **Flexible Configuration**:
   - Customizable classification rules, extensions, and target folders.
   - Support enabling/disabling specific rules.

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "Automatically sorts downloaded files into folders (Images, Docs, Apps, etc.) to keep your downloads tidy.",
+    "description": "Extension description"
+  }
+}

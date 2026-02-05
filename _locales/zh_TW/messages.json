@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "TidyDownload - 下載自動歸類助手",
+    "description": "Extension name"
+  },
+  "appDesc": {
+    "message": "自動將下載的文件分類到文件夾（圖片、文檔、應用等），保持您的下載整潔。",
+    "description": "Extension description"
+  }
+}

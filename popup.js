@@ -1,10 +1,16 @@
 // 多语言字典
 const i18n = {
   "zh-CN": {
-    app_name: "下载自动归类",
+    app_name: "下载自动归类助手",
     status_on: "正在运行",
     status_off: "已暂停",
     title_settings: "打开设置"
+  },
+  "zh-TW": {
+    app_name: "下載自動歸類助手",
+    status_on: "正在運行",
+    status_off: "已暫停",
+    title_settings: "打開設置"
   },
   "en": {
     app_name: "TidyDownload",
@@ -41,6 +47,84 @@ const i18n = {
     status_on: "يعمل",
     status_off: "متوقف",
     title_settings: "الإعدادات"
+  },
+  "pt": {
+    app_name: "TidyDownload",
+    status_on: "Executando",
+    status_off: "Pausado",
+    title_settings: "Configurações"
+  },
+  "ru": {
+    app_name: "TidyDownload",
+    status_on: "Запущен",
+    status_off: "Приостановлен",
+    title_settings: "Настройки"
+  },
+  "de": {
+    app_name: "TidyDownload",
+    status_on: "Läuft",
+    status_off: "Pausiert",
+    title_settings: "Einstellungen"
+  },
+  "id": {
+    app_name: "TidyDownload",
+    status_on: "Berjalan",
+    status_off: "Dijeda",
+    title_settings: "Pengaturan"
+  },
+  "th": {
+    app_name: "TidyDownload",
+    status_on: "กำลังทำงาน",
+    status_off: "หยุดชั่วคราว",
+    title_settings: "การตั้งค่า"
+  },
+  "vi": {
+    app_name: "TidyDownload",
+    status_on: "Đang chạy",
+    status_off: "Đã tạm dừng",
+    title_settings: "Cài đặt"
+  },
+  "tr": {
+    app_name: "TidyDownload",
+    status_on: "Çalışıyor",
+    status_off: "Duraklatıldı",
+    title_settings: "Ayarlar"
+  },
+  "it": {
+    app_name: "TidyDownload",
+    status_on: "In esecuzione",
+    status_off: "In pausa",
+    title_settings: "Impostazioni"
+  },
+  "pl": {
+    app_name: "TidyDownload",
+    status_on: "Działa",
+    status_off: "Wstrzymano",
+    title_settings: "Ustawienia"
+  },
+  "nl": {
+    app_name: "TidyDownload",
+    status_on: "Actief",
+    status_off: "Gepauzeerd",
+    title_settings: "Instellingen"
+  },
+  "sv": {
+    app_name: "TidyDownload",
+    status_on: "Körs",
+    status_off: "Pausad",
+    title_settings: "Inställningar"
+  },
+  "hi": {
+    app_name: "TidyDownload",
+    status_on: "चल रहा है",
+    status_off: "रुका हुआ",
+    title_settings: "सेटिंग्स"
+  },
+  "el": {
+    app_name: "TidyDownload",
+    status_on: "Εκτελείται",
+    status_off: "Σε παύση",
+    title_settings: "Ρυθμίσεις"
   }
 };
 
