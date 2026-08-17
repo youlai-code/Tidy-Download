@@ -1,6 +1,10 @@
 # Build / package outputs
 *.crx
 *.pem
+dist/
+
+# Local tooling
+.reasonix/
 
 # Logs
 *.log
@@ -11,3 +15,4 @@ Thumbs.db
 Desktop.ini
 .vscode/
 .idea/
+reasonix.toml

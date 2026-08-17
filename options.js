@@ -6,6 +6,18 @@ const i18n = {
     btn_import: "导入配置",
     btn_export: "导出配置",
     btn_save: "保存所有",
+    section_mode: "整理模式",
+    desc_mode: "选择下载文件的目录组织方式。",
+    section_date_settings: "时间目录结构",
+    desc_date_settings: "按时间分类时，选择日期目录的组织方式。",
+    label_mode: "模式",
+    opt_mode_type: "按类型分类",
+    opt_mode_date: "按时间分类",
+    label_date_pattern: "时间目录结构",
+    opt_date_flat: "YYYY-MM（单层目录）",
+    opt_date_nested: "YYYY/MM（两层目录）",
+    label_date_preview: "目录预览",
+    tip_date_mode: "按时间模式会忽略扩展名分类规则。",
     section_unmatched: "未匹配文件处理",
     desc_unmatched: "当下载的文件不符合任何分类规则时，该如何处理？",
     label_action: "处理方式",
@@ -13,13 +25,14 @@ const i18n = {
     opt_folder: "移动到指定文件夹",
     label_folder_name: "文件夹名称",
     desc_rules: "点击卡片编辑规则。未匹配的文件将按常规设置处理。",
+    desc_rules_date_mode: "当前使用按时间分类模式，扩展名规则暂不生效。",
     btn_add_rule: "新增分类",
     modal_edit_title: "编辑分类",
     modal_add_title: "新增分类",
     label_name: "分类名称 (显示用)",
     label_folder: "文件夹名称 (实际路径)",
     label_exts: "扩展名 (英文逗号分隔)",
-    tip_folder: "文件将保存在 Downloads/此文件夹/",
+    tip_folder: "支持多级目录，例如：Work/Docs",
     tip_exts: "例如: jpg, png, gif",
     btn_delete: "删除分类",
     btn_cancel: "取消",
@@ -27,6 +40,7 @@ const i18n = {
     msg_saved: "规则已保存，下次下载时生效",
     msg_imported: "配置导入成功",
     msg_import_err: "导入失败，格式错误",
+    msg_unsaved_confirm: "当前有未保存的改动，确定继续切换页面吗？",
     rule_Images: "图片",
     rule_Documents: "文档",
     rule_Videos: "视频",
@@ -40,6 +54,18 @@ const i18n = {
     btn_import: "導入配置",
     btn_export: "導出配置",
     btn_save: "保存所有",
+    section_mode: "整理模式",
+    desc_mode: "選擇下載檔案的目錄整理方式。",
+    section_date_settings: "時間目錄結構",
+    desc_date_settings: "按時間分類時，選擇日期目錄的組織方式。",
+    label_mode: "模式",
+    opt_mode_type: "按類型分類",
+    opt_mode_date: "按時間分類",
+    label_date_pattern: "時間目錄結構",
+    opt_date_flat: "YYYY-MM（單層目錄）",
+    opt_date_nested: "YYYY/MM（雙層目錄）",
+    label_date_preview: "目錄預覽",
+    tip_date_mode: "按時間模式會忽略副檔名分類規則。",
     section_unmatched: "未匹配文件處理",
     desc_unmatched: "當下載的文件不符合任何分類規則時，該如何處理？",
     label_action: "處理方式",
@@ -47,13 +73,14 @@ const i18n = {
     opt_folder: "移動到指定文件夾",
     label_folder_name: "文件夾名稱",
     desc_rules: "點擊卡片編輯規則。未匹配的文件將按常規設置處理。",
+    desc_rules_date_mode: "目前使用按時間分類模式，副檔名規則暫不生效。",
     btn_add_rule: "新增分類",
     modal_edit_title: "編輯分類",
     modal_add_title: "新增分類",
     label_name: "分類名稱 (顯示用)",
     label_folder: "文件夾名稱 (實際路徑)",
     label_exts: "擴展名 (英文逗號分隔)",
-    tip_folder: "文件將保存在 Downloads/此文件夾/",
+    tip_folder: "支援多層目錄，例如：Work/Docs",
     tip_exts: "例如: jpg, png, gif",
     btn_delete: "刪除分類",
     btn_cancel: "取消",
@@ -61,6 +88,7 @@ const i18n = {
     msg_saved: "規則已保存，下次下載時生效",
     msg_imported: "配置導入成功",
     msg_import_err: "導入失敗，格式錯誤",
+    msg_unsaved_confirm: "目前有尚未儲存的變更，確定仍要切換頁面嗎？",
     rule_Images: "圖片",
     rule_Documents: "文檔",
     rule_Videos: "視頻",
@@ -74,6 +102,18 @@ const i18n = {
     btn_import: "Import",
     btn_export: "Export",
     btn_save: "Save All",
+    section_mode: "Organization Mode",
+    desc_mode: "Choose how downloaded files should be organized.",
+    section_date_settings: "Date Folder Layout",
+    desc_date_settings: "Choose how date folders should be organized when date mode is active.",
+    label_mode: "Mode",
+    opt_mode_type: "Organize by type",
+    opt_mode_date: "Organize by date",
+    label_date_pattern: "Date folder layout",
+    opt_date_flat: "YYYY-MM (single folder)",
+    opt_date_nested: "YYYY/MM (two levels)",
+    label_date_preview: "Preview",
+    tip_date_mode: "Date mode ignores extension-based rules.",
     section_unmatched: "Unmatched Files",
     desc_unmatched: "How to handle files that don't match any rules?",
     label_action: "Action",
@@ -81,13 +121,14 @@ const i18n = {
     opt_folder: "Move to Folder",
     label_folder_name: "Folder Name",
     desc_rules: "Click cards to edit. Unmatched files follow General settings.",
+    desc_rules_date_mode: "Date mode is active, so extension-based rules are currently ignored.",
     btn_add_rule: "Add Category",
     modal_edit_title: "Edit Category",
     modal_add_title: "Add Category",
     label_name: "Label Name",
     label_folder: "Folder Path",
     label_exts: "Extensions (comma separated)",
-    tip_folder: "Saved to Downloads/ThisFolder/",
+    tip_folder: "Supports nested folders, e.g. Work/Docs",
     tip_exts: "e.g. jpg, png, gif",
     btn_delete: "Delete",
     btn_cancel: "Cancel",
@@ -95,6 +136,7 @@ const i18n = {
     msg_saved: "Settings Saved",
     msg_imported: "Imported Successfully",
     msg_import_err: "Import Failed",
+    msg_unsaved_confirm: "You have unsaved changes. Do you want to continue switching pages?",
     rule_Images: "Images",
     rule_Documents: "Documents",
     rule_Videos: "Videos",
@@ -717,331 +759,560 @@ const i18n = {
 };
 
 // 默认数据
+const BUILTIN_RULE_IDS = ["Images", "Documents", "Videos", "Audio", "Archives", "Apps"];
+
 const defaultRules = [
-  { 
-    id: "Images", 
-    label: "Images", 
-    folder: "Images", 
-    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"], 
-    builtin: true 
+  {
+    id: "Images",
+    label: "Images",
+    folder: "Images",
+    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"],
+    builtin: true
   },
-  { 
-    id: "Documents", 
-    label: "Documents", 
-    folder: "Documents", 
-    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"], 
-    builtin: true 
+  {
+    id: "Documents",
+    label: "Documents",
+    folder: "Documents",
+    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"],
+    builtin: true
   },
-  { 
-    id: "Videos", 
-    label: "Videos", 
-    folder: "Videos", 
-    exts: ["mp4", "mov", "mkv", "webm", "avi"], 
-    builtin: true 
+  {
+    id: "Videos",
+    label: "Videos",
+    folder: "Videos",
+    exts: ["mp4", "mov", "mkv", "webm", "avi"],
+    builtin: true
   },
-  { 
-    id: "Audio", 
-    label: "Music", 
-    folder: "Music", 
-    exts: ["mp3", "wav", "ogg", "flac", "m4a"], 
-    builtin: true 
+  {
+    id: "Audio",
+    label: "Music",
+    folder: "Music",
+    exts: ["mp3", "wav", "ogg", "flac", "m4a"],
+    builtin: true
   },
-  { 
-    id: "Archives", 
-    label: "Archives", 
-    folder: "Archives", 
-    exts: ["zip", "rar", "7z", "tar", "gz", "iso"], 
-    builtin: true 
+  {
+    id: "Archives",
+    label: "Archives",
+    folder: "Archives",
+    exts: ["zip", "rar", "7z", "tar", "gz", "iso"],
+    builtin: true
   },
-  { 
-    id: "Apps", 
-    label: "Applications", 
-    folder: "Apps", 
-    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"], 
-    builtin: true 
+  {
+    id: "Apps",
+    label: "Applications",
+    folder: "Apps",
+    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"],
+    builtin: true
   }
 ];
 
-let currentConfig = {
-  version: 1,
-  language: "zh-CN", // 默认中文
-  rules: JSON.parse(JSON.stringify(defaultRules)),
-  unmatchedAction: "others",
-  unmatchedFolder: "Others"
-};
+let currentConfig = createDefaultConfig();
+let lastSavedSnapshot = "";
+let modalInitialSnapshot = "";
 
-// DOM 元素引用
 const els = {
-  tabs: document.querySelectorAll('.nav-item'),
-  sections: document.querySelectorAll('.tab-content'),
-  pageTitle: document.getElementById('pageTitle'),
-  langSelect: document.getElementById('languageSelect'),
-  unmatchedAction: document.getElementById('unmatchedAction'),
-  unmatchedFolderRow: document.getElementById('unmatchedFolderRow'),
-  unmatchedFolder: document.getElementById('unmatchedFolder'),
-  rulesGrid: document.getElementById('rulesGrid'),
-  modal: document.getElementById('editModal'),
-  modalTitle: document.getElementById('modalTitle'),
+  tabs: document.querySelectorAll(".nav-item"),
+  sections: document.querySelectorAll(".tab-content"),
+  pageTitle: document.getElementById("pageTitle"),
+  langSelect: document.getElementById("languageSelect"),
+  organizeMode: document.getElementById("organizeMode"),
+  dateSettingsCard: document.getElementById("dateSettingsCard"),
+  dateFolderPattern: document.getElementById("dateFolderPattern"),
+  dateFolderPatternRow: document.getElementById("dateFolderPatternRow"),
+  datePreviewRow: document.getElementById("datePreviewRow"),
+  datePreviewText: document.getElementById("datePreviewText"),
+  unmatchedCard: document.getElementById("unmatchedCard"),
+  unmatchedAction: document.getElementById("unmatchedAction"),
+  unmatchedFolderRow: document.getElementById("unmatchedFolderRow"),
+  unmatchedFolder: document.getElementById("unmatchedFolder"),
+  rulesModeNotice: document.getElementById("rulesModeNotice"),
+  rulesGrid: document.getElementById("rulesGrid"),
+  toast: document.getElementById("toast"),
+  importFile: document.getElementById("importFile"),
+  modal: document.getElementById("editModal"),
+  modalTitle: document.getElementById("modalTitle"),
   inputs: {
-    id: document.getElementById('editId'),
-    label: document.getElementById('editLabel'),
-    folder: document.getElementById('editFolder'),
-    exts: document.getElementById('editExts')
+    id: document.getElementById("editId"),
+    label: document.getElementById("editLabel"),
+    folder: document.getElementById("editFolder"),
+    exts: document.getElementById("editExts")
   },
   btns: {
-    save: document.getElementById('saveBtn'),
-    import: document.getElementById('importBtn'),
-    export: document.getElementById('exportBtn'),
-    addRule: document.getElementById('addRuleBtn'),
-    closeModal: document.getElementById('closeModal'),
-    cancelModal: document.getElementById('cancelModalBtn'),
-    confirmModal: document.getElementById('confirmModalBtn'),
-    deleteRule: document.getElementById('deleteRuleBtn')
+    save: document.getElementById("saveBtn"),
+    import: document.getElementById("importBtn"),
+    export: document.getElementById("exportBtn"),
+    addRule: document.getElementById("addRuleBtn"),
+    closeModal: document.getElementById("closeModal"),
+    cancelModal: document.getElementById("cancelModalBtn"),
+    confirmModal: document.getElementById("confirmModalBtn"),
+    deleteRule: document.getElementById("deleteRuleBtn")
   }
 };
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("DOMContentLoaded", init);
 
 function init() {
   loadConfig();
   setupEventListeners();
 }
 
+function createDefaultConfig() {
+  return {
+    version: 2,
+    language: "zh-CN",
+    organizeMode: "type",
+    dateFolderPattern: "flat",
+    rules: JSON.parse(JSON.stringify(defaultRules)),
+    unmatchedAction: "others",
+    unmatchedFolder: "Others"
+  };
+}
+
 function loadConfig() {
-  chrome.storage.local.get(['rulesConfig'], (result) => {
-    if (result.rulesConfig) {
-      currentConfig = { ...currentConfig, ...result.rulesConfig };
-    }
+  chrome.storage.local.get(["rulesConfig"], (result) => {
+    currentConfig = normalizeConfig(result.rulesConfig);
     applyLanguage(currentConfig.language);
     renderUI();
+    markCurrentStateAsSaved();
   });
 }
 
 function setupEventListeners() {
-  // Tab 切换
-  els.tabs.forEach(tab => {
-    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  els.tabs.forEach((tab) => {
+    tab.addEventListener("click", () => switchTab(tab.dataset.tab));
   });
 
-  // 语言切换
-  els.langSelect.addEventListener('change', (e) => {
-    currentConfig.language = e.target.value;
+  els.langSelect.addEventListener("change", (event) => {
+    currentConfig.language = event.target.value;
     applyLanguage(currentConfig.language);
-    renderUI(); // 重新渲染卡片以更新分类名称
-    saveConfig(true); // 自动静默保存
+    renderUI();
+    saveConfig(true);
   });
 
-  // 常规设置联动
-  els.unmatchedAction.addEventListener('change', toggleUnmatchedFolder);
+  els.organizeMode.addEventListener("change", handleOrganizeModeChange);
+  els.organizeMode.addEventListener("change", updateDirtyState);
+  els.dateFolderPattern.addEventListener("change", updateDatePreview);
+  els.dateFolderPattern.addEventListener("change", updateDirtyState);
+  els.unmatchedAction.addEventListener("change", toggleUnmatchedFolder);
+  els.unmatchedAction.addEventListener("change", updateDirtyState);
+  els.unmatchedFolder.addEventListener("input", updateDirtyState);
+  window.addEventListener("beforeunload", handleBeforeUnload);
 
-  // 按钮事件
-  els.btns.save.addEventListener('click', saveConfig);
-  els.btns.addRule.addEventListener('click', () => openModal()); // 空参数表示新增
-  els.btns.closeModal.addEventListener('click', closeModal);
-  els.btns.cancelModal.addEventListener('click', closeModal);
-  els.btns.confirmModal.addEventListener('click', saveRuleFromModal);
-  els.btns.deleteRule.addEventListener('click', deleteRuleFromModal);
-  
-  // 导入导出
-  els.btns.export.addEventListener('click', exportRules);
-  els.btns.import.addEventListener('click', () => document.getElementById('importFile').click());
-  document.getElementById('importFile').addEventListener('change', importRules);
+  els.btns.save.addEventListener("click", saveConfig);
+  els.btns.addRule.addEventListener("click", () => openModal());
+  els.btns.closeModal.addEventListener("click", closeModal);
+  els.btns.cancelModal.addEventListener("click", closeModal);
+  els.btns.confirmModal.addEventListener("click", saveRuleFromModal);
+  els.btns.deleteRule.addEventListener("click", deleteRuleFromModal);
+
+  els.btns.export.addEventListener("click", exportRules);
+  els.btns.import.addEventListener("click", () => els.importFile.click());
+  els.importFile.addEventListener("change", importRules);
 }
 
-// --- UI 渲染逻辑 ---
-
 function renderUI() {
-  // 填充常规设置
   els.langSelect.value = currentConfig.language;
-  els.unmatchedAction.value = currentConfig.unmatchedAction || "others";
-  els.unmatchedFolder.value = currentConfig.unmatchedFolder || "Others";
-  toggleUnmatchedFolder();
+  els.organizeMode.value = currentConfig.organizeMode;
+  els.dateFolderPattern.value = currentConfig.dateFolderPattern;
+  els.unmatchedAction.value = currentConfig.unmatchedAction;
+  els.unmatchedFolder.value = currentConfig.unmatchedFolder;
 
-  // 渲染规则网格
-  els.rulesGrid.innerHTML = '';
+  handleOrganizeModeChange();
+  renderRulesGrid();
+}
+
+function renderRulesGrid() {
+  els.rulesGrid.innerHTML = "";
+
   currentConfig.rules.forEach((rule, index) => {
-    const card = document.createElement('div');
-    card.className = 'rule-card';
+    const card = document.createElement("div");
+    card.className = "rule-card";
     card.onclick = () => openModal(index);
-    
-    // 获取多语言标签
-    const t = i18n[currentConfig.language];
-    // 兼容旧数据的 builtin 判断：如果 builtin 未定义但 ID 在默认列表中，也视为内置
-    const isBuiltin = rule.builtin !== false && ['Images', 'Documents', 'Videos', 'Audio', 'Archives', 'Apps'].includes(rule.id);
-    const ruleLabel = (isBuiltin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
 
-    // 关键修改：不再截取前6个，而是映射所有后缀 
-    // 如果后缀实在太多（比如超过20个），可以考虑切片，但一般情况下全部显示更好 
-    const tags = rule.exts.map(ext => `<span class="ext-tag">.${ext}</span>`).join(''); 
-    
-    // 移除 "more" 变量，因为我们现在全展示了 
-    
-    card.innerHTML = ` 
-      <div class="rule-card-header"> 
-        <span class="rule-name">${ruleLabel}</span> 
-        <span class="rule-folder">/${rule.folder}</span> 
-      </div> 
-      <div class="rule-tags">${tags}</div> 
+    const ruleLabel = escapeHtml(getRuleDisplayLabel(rule));
+    const folderPath = escapeHtml(rule.folder);
+    const tags = rule.exts
+      .map((ext) => `<span class="ext-tag">.${escapeHtml(ext)}</span>`)
+      .join("");
+
+    card.innerHTML = `
+      <div class="rule-card-header">
+        <span class="rule-name">${ruleLabel}</span>
+        <span class="rule-folder">/${folderPath}</span>
+      </div>
+      <div class="rule-tags">${tags}</div>
     `;
+
     els.rulesGrid.appendChild(card);
   });
 }
 
 function switchTab(tabName) {
-  // 更新侧边栏
-  els.tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
-  // 更新内容区
-  els.sections.forEach(s => s.classList.toggle('active', s.id === `tab-${tabName}`));
-  
-  // 更新标题
-  const lang = currentConfig.language;
-  const titleKey = tabName === 'general' ? 'nav_general' : 'nav_rules';
-  els.pageTitle.textContent = i18n[lang][titleKey];
+  const activeTab = document.querySelector(".nav-item.active")?.dataset.tab;
+  if (tabName === activeTab) {
+    return;
+  }
+
+  if (hasAnyPendingUnsavedChanges() && !window.confirm(getText("msg_unsaved_confirm"))) {
+    return;
+  }
+
+  els.tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
+  els.sections.forEach((section) => section.classList.toggle("active", section.id === `tab-${tabName}`));
+
+  const titleKey = tabName === "general" ? "nav_general" : "nav_rules";
+  els.pageTitle.textContent = getText(titleKey);
+}
+
+function handleOrganizeModeChange() {
+  const isDateMode = els.organizeMode.value === "date";
+
+  els.dateSettingsCard.style.display = "block";
+  els.dateSettingsCard.style.opacity = isDateMode ? "1" : "0.65";
+  els.dateFolderPattern.disabled = !isDateMode;
+
+  els.unmatchedCard.style.display = "block";
+  els.unmatchedCard.style.opacity = isDateMode ? "0.65" : "1";
+  els.unmatchedAction.disabled = isDateMode;
+  els.rulesModeNotice.style.display = isDateMode ? "block" : "none";
+
+  toggleUnmatchedFolder();
+  updateDatePreview();
 }
 
 function toggleUnmatchedFolder() {
-  const show = els.unmatchedAction.value === 'others';
-  els.unmatchedFolderRow.style.display = show ? 'block' : 'none';
+  const show = els.unmatchedAction.value === "others";
+  els.unmatchedFolderRow.style.display = show ? "block" : "none";
+  els.unmatchedFolder.disabled = els.organizeMode.value === "date" || !show;
+}
+
+function updateDatePreview() {
+  const now = new Date();
+  const year = String(now.getFullYear());
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const folder = els.dateFolderPattern.value === "nested" ? `${year}/${month}` : `${year}-${month}`;
+  els.datePreviewText.textContent = `Downloads/${folder}/example.pdf`;
 }
 
 // --- 多语言逻辑 ---
 
 function applyLanguage(lang) {
-  const t = i18n[lang] || i18n['en'];
-  
-  // RTL support for Arabic
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (t[key]) el.textContent = t[key];
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    element.textContent = getText(element.dataset.i18n, lang);
   });
-  // 更新 placeholder
-  if(lang === 'zh-CN') {
-     els.inputs.label.placeholder = "例如：设计素材";
-     els.inputs.folder.placeholder = "Design/Assets";
+
+  if (lang.startsWith("zh")) {
+    els.inputs.label.placeholder = "例如：设计素材";
+    els.inputs.folder.placeholder = "Design/Assets";
   } else {
-     els.inputs.label.placeholder = "e.g. Design Assets";
-     els.inputs.folder.placeholder = "Design/Assets";
+    els.inputs.label.placeholder = "e.g. Design Assets";
+    els.inputs.folder.placeholder = "Design/Assets";
   }
+}
+
+function getText(key, lang = currentConfig.language) {
+  const pack = i18n[lang] || i18n.en || {};
+  return pack[key] || i18n.en?.[key] || i18n["zh-CN"]?.[key] || key;
+}
+
+function getRuleDisplayLabel(rule) {
+  const isBuiltin = rule.builtin !== false && BUILTIN_RULE_IDS.includes(rule.id);
+  return isBuiltin ? getText(`rule_${rule.id}`) : rule.label;
 }
 
 // --- Modal 逻辑 ---
 
 function openModal(ruleIndex = null) {
   const isEdit = ruleIndex !== null;
-  const lang = currentConfig.language;
-  const t = i18n[lang];
 
-  els.modal.classList.remove('hidden');
-  els.modalTitle.textContent = isEdit ? t.modal_edit_title : t.modal_add_title;
-  
+  els.modal.classList.remove("hidden");
+  els.modalTitle.textContent = getText(isEdit ? "modal_edit_title" : "modal_add_title");
+
   if (isEdit) {
     const rule = currentConfig.rules[ruleIndex];
-    els.inputs.id.value = ruleIndex; // 临时存索引
-    
-    // 编辑时也显示翻译后的名称
-    const isBuiltin = rule.builtin !== false && ['Images', 'Documents', 'Videos', 'Audio', 'Archives', 'Apps'].includes(rule.id);
-    els.inputs.label.value = (isBuiltin && t[`rule_${rule.id}`]) ? t[`rule_${rule.id}`] : rule.label;
-    
+    els.inputs.id.value = String(ruleIndex);
+    els.inputs.label.value = getRuleDisplayLabel(rule);
     els.inputs.folder.value = rule.folder;
-    els.inputs.exts.value = rule.exts.join(', ');
-    els.btns.deleteRule.style.display = 'block';
-  } else {
-    els.inputs.id.value = "new";
-    els.inputs.label.value = "";
-    els.inputs.folder.value = "";
-    els.inputs.exts.value = "";
-    els.btns.deleteRule.style.display = 'none';
+    els.inputs.exts.value = rule.exts.join(", ");
+    els.btns.deleteRule.style.display = "block";
+    modalInitialSnapshot = getModalSnapshot();
+    return;
   }
+
+  els.inputs.id.value = "new";
+  els.inputs.label.value = "";
+  els.inputs.folder.value = "";
+  els.inputs.exts.value = "";
+  els.btns.deleteRule.style.display = "none";
+
+  modalInitialSnapshot = getModalSnapshot();
 }
 
 function closeModal() {
-  els.modal.classList.add('hidden');
+  els.modal.classList.add("hidden");
+  modalInitialSnapshot = "";
 }
 
 function saveRuleFromModal() {
   const index = els.inputs.id.value;
-  const newRule = {
-    id: index === "new" ? `custom_${Date.now()}` : currentConfig.rules[index].id,
-    label: els.inputs.label.value.trim() || "未命名",
-    folder: els.inputs.folder.value.trim() || "Unsorted",
-    exts: els.inputs.exts.value.split(/[,，]/).map(s => s.trim().toLowerCase()).filter(Boolean),
-    builtin: false // 编辑后视为自定义
-  };
+  const existingRule = index === "new" ? null : currentConfig.rules[Number(index)];
+  const newRule = normalizeRule(
+    {
+      id: existingRule ? existingRule.id : `custom_${Date.now()}`,
+      label: els.inputs.label.value.trim() || "Untitled",
+      folder: els.inputs.folder.value.trim() || "Unsorted",
+      exts: els.inputs.exts.value.split(/[,，]/).map((item) => item.trim().toLowerCase()).filter(Boolean),
+      builtin: false
+    },
+    index === "new" ? currentConfig.rules.length : Number(index)
+  );
 
   if (index === "new") {
     currentConfig.rules.push(newRule);
   } else {
-    currentConfig.rules[index] = newRule;
+    currentConfig.rules[Number(index)] = newRule;
   }
-  
+
   closeModal();
   renderUI();
-  // 注意：这里只是更新了内存和UI，用户需要点“保存所有”才会持久化，或者你可以这里自动保存
-  saveConfig(true); 
+  saveConfig(true);
 }
 
 function deleteRuleFromModal() {
   const index = els.inputs.id.value;
-  if (index !== "new") {
-    currentConfig.rules.splice(index, 1);
-    closeModal();
-    renderUI();
-    saveConfig(true);
+  if (index === "new") {
+    return;
   }
+
+  currentConfig.rules.splice(Number(index), 1);
+  closeModal();
+  renderUI();
+  saveConfig(true);
 }
 
 // --- 核心功能 ---
 
 function saveConfig(silent = false) {
-  // 收集常规设置
-  currentConfig.unmatchedAction = els.unmatchedAction.value;
-  currentConfig.unmatchedFolder = els.unmatchedFolder.value;
+  currentConfig = normalizeConfig({
+    ...currentConfig,
+    language: currentConfig.language,
+    organizeMode: els.organizeMode.value,
+    dateFolderPattern: els.dateFolderPattern.value,
+    unmatchedAction: els.unmatchedAction.value,
+    unmatchedFolder: els.unmatchedFolder.value
+  });
 
   chrome.storage.local.set({ rulesConfig: currentConfig }, () => {
-    if (!silent) showToast(i18n[currentConfig.language].msg_saved);
+    markCurrentStateAsSaved();
+    if (!silent) {
+      showToast(getText("msg_saved"));
+    }
   });
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.opacity = '1';
-  t.style.top = '40px';
+function showToast(message) {
+  els.toast.textContent = message;
+  els.toast.style.opacity = "1";
+  els.toast.style.top = "40px";
+
   setTimeout(() => {
-    t.style.opacity = '0';
-    t.style.top = '20px';
+    els.toast.style.opacity = "0";
+    els.toast.style.top = "20px";
   }, 2000);
 }
 
 function exportRules() {
-  const blob = new Blob([JSON.stringify(currentConfig, null, 2)], { type: 'application/json' });
+  const blob = new Blob([JSON.stringify(currentConfig, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'smart-dl-config.json';
-  a.click();
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "smart-dl-config.json";
+  link.click();
 }
 
 function importRules(event) {
   const file = event.target.files[0];
-  if (!file) return;
+  if (!file) {
+    return;
+  }
+
+  const previousLanguage = currentConfig.language;
   const reader = new FileReader();
+
   reader.onload = () => {
     try {
       const parsed = JSON.parse(reader.result);
-      if (parsed.rules && Array.isArray(parsed.rules)) {
-        currentConfig = { ...currentConfig, ...parsed };
-        // 保持语言设置不变，除非你想覆盖
-        applyLanguage(currentConfig.language);
-        renderUI();
-        saveConfig();
-        showToast(i18n[currentConfig.language].msg_imported);
-      }
-    } catch (e) {
-      showToast(i18n[currentConfig.language].msg_import_err);
+      currentConfig = normalizeConfig(parsed);
+      currentConfig.language = parsed.language || previousLanguage;
+      applyLanguage(currentConfig.language);
+      renderUI();
+      saveConfig();
+      showToast(getText("msg_imported"));
+    } catch (error) {
+      showToast(getText("msg_import_err"));
+    } finally {
+      els.importFile.value = "";
     }
   };
+
   reader.readAsText(file);
+}
+
+function normalizeConfig(rawConfig) {
+  const config = createDefaultConfig();
+
+  if (!rawConfig) {
+    return config;
+  }
+
+  if (!Array.isArray(rawConfig) && typeof rawConfig === "object") {
+    if (typeof rawConfig.language === "string" && rawConfig.language.trim()) {
+      config.language = rawConfig.language;
+    }
+    if (rawConfig.organizeMode === "date") {
+      config.organizeMode = "date";
+    }
+    if (rawConfig.dateFolderPattern === "nested") {
+      config.dateFolderPattern = "nested";
+    }
+    if (rawConfig.unmatchedAction === "root") {
+      config.unmatchedAction = "root";
+    }
+    if (typeof rawConfig.unmatchedFolder === "string" && rawConfig.unmatchedFolder.trim()) {
+      config.unmatchedFolder = rawConfig.unmatchedFolder.trim();
+    }
+  }
+
+  if (Array.isArray(rawConfig)) {
+    config.rules = normalizeRulesArray(rawConfig);
+  } else if (Array.isArray(rawConfig.rules)) {
+    config.rules = normalizeRulesArray(rawConfig.rules);
+  } else if (rawConfig.rules && typeof rawConfig.rules === "object") {
+    config.rules = normalizeRulesFromObject(rawConfig.rules);
+  } else if (typeof rawConfig === "object") {
+    config.rules = normalizeRulesFromObject(rawConfig);
+  }
+
+  config.rules = mergeWithDefaults(config.rules);
+  return config;
+}
+
+function normalizeRulesArray(rules) {
+  return rules.filter(Boolean).map((rule, index) => normalizeRule(rule, index));
+}
+
+function normalizeRulesFromObject(obj) {
+  return Object.entries(obj)
+    .filter(([, value]) => Array.isArray(value) || (value && Array.isArray(value.exts)))
+    .map(([key, value], index) => {
+      const ruleValue = Array.isArray(value) ? { exts: value } : value;
+      return normalizeRule({ ...ruleValue, id: ruleValue.id || key }, index);
+    });
+}
+
+function normalizeRule(rule, index) {
+  const id = rule.id || `custom_${index}`;
+  const builtin = rule.builtin !== false && BUILTIN_RULE_IDS.includes(id);
+
+  return {
+    id,
+    label: rule.label || rule.folder || id,
+    folder: rule.folder || id,
+    exts: Array.isArray(rule.exts) ? rule.exts.map((ext) => normalizeExt(ext)).filter(Boolean) : [],
+    builtin
+  };
+}
+
+function mergeWithDefaults(rules) {
+  const mergedRules = new Map();
+
+  defaultRules.forEach((rule) => {
+    mergedRules.set(rule.id, { ...rule });
+  });
+
+  rules.forEach((rule) => {
+    if (!rule || !rule.id) {
+      return;
+    }
+
+    const mergedRule = { ...(mergedRules.get(rule.id) || {}), ...rule };
+    if (BUILTIN_RULE_IDS.includes(rule.id) && rule.builtin !== false) {
+      mergedRule.builtin = true;
+    }
+    mergedRules.set(rule.id, mergedRule);
+  });
+
+  return Array.from(mergedRules.values());
+}
+
+function normalizeExt(ext) {
+  return String(ext || "").trim().toLowerCase();
+}
+
+function buildDraftConfig() {
+  return normalizeConfig({
+    ...currentConfig,
+    language: currentConfig.language,
+    organizeMode: els.organizeMode.value,
+    dateFolderPattern: els.dateFolderPattern.value,
+    unmatchedAction: els.unmatchedAction.value,
+    unmatchedFolder: els.unmatchedFolder.value
+  });
+}
+
+function getConfigSnapshot(config) {
+  return JSON.stringify(config);
+}
+
+function hasPendingUnsavedChanges() {
+  return getConfigSnapshot(buildDraftConfig()) !== lastSavedSnapshot;
+}
+
+function hasPendingModalChanges() {
+  if (els.modal.classList.contains("hidden")) {
+    return false;
+  }
+
+  return getModalSnapshot() !== modalInitialSnapshot;
+}
+
+function hasAnyPendingUnsavedChanges() {
+  return hasPendingUnsavedChanges() || hasPendingModalChanges();
+}
+
+function updateDirtyState() {
+  return hasPendingUnsavedChanges();
+}
+
+function markCurrentStateAsSaved() {
+  lastSavedSnapshot = getConfigSnapshot(buildDraftConfig());
+}
+
+function handleBeforeUnload(event) {
+  if (!hasAnyPendingUnsavedChanges()) {
+    return;
+  }
+
+  event.preventDefault();
+  event.returnValue = "";
+}
+
+function getModalSnapshot() {
+  return JSON.stringify({
+    id: els.inputs.id.value,
+    label: els.inputs.label.value.trim(),
+    folder: els.inputs.folder.value.trim(),
+    exts: els.inputs.exts.value.trim()
+  });
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }

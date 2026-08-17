@@ -4,19 +4,31 @@ const i18n = {
     app_name: "下载自动归类助手",
     status_on: "正在运行",
     status_off: "已暂停",
-    title_settings: "打开设置"
+    title_settings: "打开设置",
+    strategy_label: "当前策略",
+    strategy_type: "按类型分类",
+    strategy_date_flat: "按时间分类 · YYYY-MM",
+    strategy_date_nested: "按时间分类 · YYYY/MM"
   },
   "zh-TW": {
     app_name: "下載自動歸類助手",
     status_on: "正在運行",
     status_off: "已暫停",
-    title_settings: "打開設置"
+    title_settings: "打開設置",
+    strategy_label: "目前策略",
+    strategy_type: "按類型分類",
+    strategy_date_flat: "按時間分類 · YYYY-MM",
+    strategy_date_nested: "按時間分類 · YYYY/MM"
   },
   "en": {
     app_name: "TidyDownload",
     status_on: "Running",
     status_off: "Paused",
-    title_settings: "Settings"
+    title_settings: "Settings",
+    strategy_label: "Current Strategy",
+    strategy_type: "By type",
+    strategy_date_flat: "By date · YYYY-MM",
+    strategy_date_nested: "By date · YYYY/MM"
   },
   "ja": {
     app_name: "自動整理",
@@ -132,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const els = {
     toggle: document.getElementById('toggle'),
     status: document.getElementById('statusText'),
-    btnSettings: document.getElementById('btnSettings'),
-    appName: document.querySelector('[data-i18n="app_name"]')
+    strategy: document.getElementById('strategyText'),
+    btnSettings: document.getElementById('btnSettings')
   };
 
   // 1. 获取配置 (开关状态 + 语言设置)
@@ -148,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const enabled = result.autoClassifyEnabled !== false;
     els.toggle.checked = enabled;
     updateStatusText(enabled, lang);
+    updateStrategyText(result.rulesConfig, lang);
   });
 
   // 2. 监听开关切换
@@ -172,22 +185,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 辅助函数 ---
 
   function updateLanguage(lang) {
-    const t = i18n[lang] || i18n['en']; // 回退到英文
-    els.appName.textContent = t.app_name;
-    els.btnSettings.title = t.title_settings;
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      element.textContent = getText(lang, element.dataset.i18n);
+    });
+
+    els.btnSettings.title = getText(lang, 'title_settings');
     
     // RTL 支持
     document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
   }
 
   function updateStatusText(enabled, lang) {
-    const t = i18n[lang] || i18n['en'];
     if (enabled) {
-      els.status.textContent = t.status_on;
+      els.status.textContent = getText(lang, 'status_on');
       els.status.className = 'status-text active'; // 添加绿色样式
     } else {
-      els.status.textContent = t.status_off;
+      els.status.textContent = getText(lang, 'status_off');
       els.status.className = 'status-text'; // 灰色默认样式
     }
+  }
+
+  function updateStrategyText(config, lang) {
+    const organizeMode = config && config.organizeMode === 'date' ? 'date' : 'type';
+    const dateFolderPattern = config && config.dateFolderPattern === 'nested' ? 'nested' : 'flat';
+    const key = organizeMode === 'date'
+      ? (dateFolderPattern === 'nested' ? 'strategy_date_nested' : 'strategy_date_flat')
+      : 'strategy_type';
+
+    els.strategy.textContent = getText(lang, key);
+  }
+
+  function getText(lang, key) {
+    return (i18n[lang] && i18n[lang][key]) || (i18n.en && i18n.en[key]) || key;
   }
 });

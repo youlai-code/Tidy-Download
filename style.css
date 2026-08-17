@@ -123,7 +123,40 @@ label { display: block; font-size: 13px; font-weight: 600; color: var(--text-mai
   font-size: 14px; transition: .2s;
 }
 .input-text:focus, .input-textarea:focus { border-color: var(--primary); outline: none; }
+.input-text:disabled, .input-select:disabled, .input-textarea:disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
 small { color: var(--text-sub); font-size: 12px; }
+.settings-preview {
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 14px 16px;
+  max-width: 420px;
+  background: #f8fafc;
+}
+.settings-preview-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.settings-preview-value {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-main);
+  word-break: break-all;
+}
+.mode-notice {
+  display: none;
+  margin: -10px 0 0;
+  color: var(--primary);
+  font-size: 13px;
+}
 
 /* 规则网格 (Compact Grid) */
 .rules-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }

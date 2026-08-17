@@ -2,20 +2,32 @@
   "manifest_version": 3,
   "default_locale": "zh_CN",
   "name": "__MSG_appName__",
-  "version": "1.1.0",
+  "version": "__VERSION__",
   "description": "__MSG_appDesc__",
   "permissions": [
     "downloads",
     "storage"
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": [
+      "background.js"
+    ]
   },
   "action": {
     "default_title": "TidyDownload",
     "default_popup": "popup.html"
   },
   "options_page": "options.html",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "__ADDON_ID__",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

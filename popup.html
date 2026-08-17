@@ -100,6 +100,34 @@
       transition: color 0.3s;
     }
     .status-text.active { color: #10b981; } /* Green when active */
+
+    .strategy-panel {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .strategy-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .strategy-value {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      word-break: break-word;
+    }
   </style>
 </head>
 <body>
@@ -120,6 +148,10 @@
       <span class="slider"></span>
     </label>
     <div id="statusText" class="status-text" data-i18n="status_on">Enabled</div>
+    <div class="strategy-panel">
+      <div class="strategy-label" data-i18n="strategy_label">Current Strategy</div>
+      <div id="strategyText" class="strategy-value" data-i18n="strategy_type">By type</div>
+    </div>
   </div>
 
   <script src="popup.js"></script>

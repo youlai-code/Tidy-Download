@@ -1,39 +1,40 @@
-// 默认分类逻辑，当 storage 为空时使用
 const defaultRules = [
-  { 
-    id: "Images", 
-    folder: "Images", 
-    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"] 
+  {
+    id: "Images",
+    folder: "Images",
+    exts: ["png", "jpg", "jpeg", "webp", "gif", "svg", "ico", "heic"]
   },
-  { 
-    id: "Documents", 
-    folder: "Documents", 
-    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"] 
+  {
+    id: "Documents",
+    folder: "Documents",
+    exts: ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "md", "csv"]
   },
-  { 
-    id: "Videos", 
-    folder: "Videos", 
-    exts: ["mp4", "mov", "mkv", "webm", "avi"] 
+  {
+    id: "Videos",
+    folder: "Videos",
+    exts: ["mp4", "mov", "mkv", "webm", "avi"]
   },
-  { 
-    id: "Audio", 
-    folder: "Music", 
-    exts: ["mp3", "wav", "ogg", "flac", "m4a"] 
+  {
+    id: "Audio",
+    folder: "Music",
+    exts: ["mp3", "wav", "ogg", "flac", "m4a"]
   },
-  { 
-    id: "Archives", 
-    folder: "Archives", 
-    exts: ["zip", "rar", "7z", "tar", "gz", "iso"] 
+  {
+    id: "Archives",
+    folder: "Archives",
+    exts: ["zip", "rar", "7z", "tar", "gz", "iso"]
   },
-  { 
-    id: "Apps", 
-    folder: "Apps", 
-    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"] 
+  {
+    id: "Apps",
+    folder: "Apps",
+    exts: ["exe", "dmg", "pkg", "msi", "apk", "deb"]
   }
 ];
 
 const defaultConfig = {
-  version: 1,
+  version: 2,
+  organizeMode: "type",
+  dateFolderPattern: "flat",
   rules: defaultRules,
   unmatchedAction: "others",
   unmatchedFolder: "Others"
@@ -51,28 +52,8 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
     }
 
     const config = normalizeConfig(result.rulesConfig || result.userRules || defaultConfig);
-    const rules = config.rules;
-    const filenameParts = item.filename.split('.');
-    const extension = filenameParts.length > 1 ? filenameParts.pop().toLowerCase() : '';
-
-    let subFolder = "";
-
-    if (extension) {
-      for (const rule of rules) {
-        if (rule.exts.includes(extension)) {
-          subFolder = sanitizeFolderName(rule.folder);
-          break;
-        }
-      }
-    }
-
-    if (!subFolder) {
-      if (config.unmatchedAction === "others") {
-        subFolder = sanitizeFolderName(config.unmatchedFolder || "Others");
-      }
-    }
-
-    const cleanFilename = item.filename.replace(/\\/g, '/');
+    const subFolder = resolveTargetFolder(item, config);
+    const cleanFilename = sanitizeRelativePath(item.filename);
     const finalPath = subFolder ? `${subFolder}/${cleanFilename}` : cleanFilename;
 
     suggest({
@@ -86,7 +67,9 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
 
 function normalizeConfig(rawConfig) {
   const config = {
-    version: 1,
+    version: 2,
+    organizeMode: "type",
+    dateFolderPattern: "flat",
     rules: [...defaultRules],
     unmatchedAction: "others",
     unmatchedFolder: "Others"
@@ -94,6 +77,12 @@ function normalizeConfig(rawConfig) {
 
   if (!rawConfig) return config;
 
+  if (rawConfig.organizeMode === "date") {
+    config.organizeMode = "date";
+  }
+  if (rawConfig.dateFolderPattern === "nested") {
+    config.dateFolderPattern = "nested";
+  }
   if (rawConfig.unmatchedAction) {
     config.unmatchedAction = rawConfig.unmatchedAction;
   }
@@ -150,8 +139,65 @@ function normalizeExt(ext) {
   return String(ext || "").trim().toLowerCase();
 }
 
-function sanitizeFolderName(name) {
-  return String(name || "")
-    .replace(/[\\/:*?"<>|]+/g, "_")
+function resolveTargetFolder(item, config) {
+  if (config.organizeMode === "date") {
+    return buildDateFolder(item.startTime, config.dateFolderPattern);
+  }
+
+  const extension = getFileExtension(item.filename);
+  let subFolder = "";
+
+  if (extension) {
+    for (const rule of config.rules) {
+      if (rule.exts.includes(extension)) {
+        subFolder = sanitizeRelativePath(rule.folder);
+        break;
+      }
+    }
+  }
+
+  if (!subFolder && config.unmatchedAction === "others") {
+    subFolder = sanitizeRelativePath(config.unmatchedFolder || "Others");
+  }
+
+  return subFolder;
+}
+
+function getFileExtension(filename) {
+  const cleanFilename = String(filename || "").replace(/\\/g, "/").split("/").pop() || "";
+  const filenameParts = cleanFilename.split(".");
+  return filenameParts.length > 1 ? filenameParts.pop().toLowerCase() : "";
+}
+
+function buildDateFolder(startTime, pattern) {
+  const downloadDate = startTime ? new Date(startTime) : new Date();
+  if (Number.isNaN(downloadDate.getTime())) {
+    return "";
+  }
+
+  const year = String(downloadDate.getFullYear());
+  const month = String(downloadDate.getMonth() + 1).padStart(2, "0");
+  const folder = pattern === "nested" ? `${year}/${month}` : `${year}-${month}`;
+  return sanitizeRelativePath(folder);
+}
+
+function sanitizeRelativePath(value) {
+  return String(value || "")
+    .replace(/\\/g, "/")
+    .split("/")
+    .map(sanitizePathSegment)
+    .filter(Boolean)
+    .join("/");
+}
+
+function sanitizePathSegment(segment) {
+  const sanitized = String(segment || "")
+    .replace(/[\\:*?"<>|]+/g, "_")
     .trim();
+
+  if (!sanitized || sanitized === "." || sanitized === "..") {
+    return "";
+  }
+
+  return sanitized;
 }

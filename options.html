@@ -65,6 +65,38 @@
 
       <section id="tab-general" class="tab-content active">
         <div class="card">
+          <h3 data-i18n="section_mode">整理模式</h3>
+          <p class="card-desc" data-i18n="desc_mode">选择下载文件的目录组织方式。</p>
+
+          <div class="form-row">
+            <label data-i18n="label_mode">模式</label>
+            <select id="organizeMode" class="input-select">
+              <option value="type" data-i18n="opt_mode_type">按类型分类</option>
+              <option value="date" data-i18n="opt_mode_date">按时间分类</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card" id="dateSettingsCard">
+          <h3 data-i18n="section_date_settings">时间目录结构</h3>
+          <p class="card-desc" data-i18n="desc_date_settings">按时间分类时，选择日期目录的组织方式。</p>
+
+          <div class="form-row" id="dateFolderPatternRow">
+            <label data-i18n="label_date_pattern">时间目录结构</label>
+            <select id="dateFolderPattern" class="input-select">
+              <option value="flat" data-i18n="opt_date_flat">YYYY-MM（单层目录）</option>
+              <option value="nested" data-i18n="opt_date_nested">YYYY/MM（两层目录）</option>
+            </select>
+          </div>
+
+          <div id="datePreviewRow" class="settings-preview">
+            <div class="settings-preview-label" data-i18n="label_date_preview">目录预览</div>
+            <code id="datePreviewText" class="settings-preview-value">Downloads/2026-04/example.pdf</code>
+            <small data-i18n="tip_date_mode">按时间模式会忽略扩展名分类规则。</small>
+          </div>
+        </div>
+
+        <div class="card" id="unmatchedCard">
           <h3 data-i18n="section_unmatched">未匹配文件处理</h3>
           <p class="card-desc" data-i18n="desc_unmatched">当下载的文件不符合任何分类规则时，该如何处理？</p>
           
@@ -85,7 +117,10 @@
 
       <section id="tab-rules" class="tab-content">
         <div class="rules-header">
-          <p class="card-desc" data-i18n="desc_rules">点击卡片编辑规则，或拖拽排序（开发中）。</p>
+          <div>
+            <p class="card-desc" data-i18n="desc_rules">点击卡片编辑规则，或拖拽排序（开发中）。</p>
+            <p id="rulesModeNotice" class="mode-notice" data-i18n="desc_rules_date_mode">当前使用按时间分类模式，扩展名规则暂不生效。</p>
+          </div>
           <button id="addRuleBtn" class="btn btn-secondary">
             <span class="plus-icon">+</span> <span data-i18n="btn_add_rule">新增分类</span>
           </button>
